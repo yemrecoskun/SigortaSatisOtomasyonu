@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7B71D180-DD46-44BB-A520-EC75AB284F79}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Peak.Service.SigortaOtomasyonu</RootNamespace>
+    <AssemblyName>Peak.Service.SigortaOtomasyonu</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="SCevapDuzenle.cs" />
+    <Compile Include="SCevapEkle.cs" />
+    <Compile Include="SCevapListele.cs" />
+    <Compile Include="SComponentDuzenle.cs" />
+    <Compile Include="SComponentKaydet.cs" />
+    <Compile Include="SComponentListele.cs" />
+    <Compile Include="SGetirCevap.cs" />
+    <Compile Include="SGetirKaskoSoru.cs" />
+    <Compile Include="SGetirSoru.cs" />
+    <Compile Include="SGetirTanimAdiSelected.cs" />
+    <Compile Include="SDuzenleUrun.cs" />
+    <Compile Include="SEkleUrun.cs" />
+    <Compile Include="SKaskoSatis.cs" />
+    <Compile Include="SKullaniciGiris.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SDetaySil.cs" />
+    <Compile Include="SMusteriDogrula.cs" />
+    <Compile Include="SSoruDuzenle.cs" />
+    <Compile Include="SSoruKaydet.cs" />
+    <Compile Include="SSoruListele.cs" />
+    <Compile Include="STanimGetir.cs" />
+    <Compile Include="SUrunListele.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Peak.Common.SigortaOtomasyonu\Peak.Common.SigortaOtomasyonu.csproj">
+      <Project>{F59015CA-5DCF-48D3-9698-75B68022A00A}</Project>
+      <Name>Peak.Common.SigortaOtomasyonu</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Peak.Entity.SigortaOtomasyonu\Peak.Entity.SigortaOtomasyonu.csproj">
+      <Project>{25FB2AC2-E36A-4372-B40F-66F5B5D41179}</Project>
+      <Name>Peak.Entity.SigortaOtomasyonu</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

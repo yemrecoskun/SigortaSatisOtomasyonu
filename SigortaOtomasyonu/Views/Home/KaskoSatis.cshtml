@@ -1,0 +1,145 @@
+﻿@using Peak.Service.SigortaOtomasyonu
+@using Peak.Common.SigortaOtomasyonu.DataTransferObjects
+@{
+    ViewBag.Title = "KaskoSatis";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    DTOTanimDetay detay;
+    SGetirKaskoSoru servicesorulistele;
+    SGetirCevap servicegetircevap;
+    DTOTanimDetay cevap;
+}
+<html>
+<head>
+    <link href="~/Content/otomasyon/KaskoSatis.css" rel="stylesheet" />
+    <script src="~/Scripts/Otomasyon/Otomasyon.js"></script>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/otomasyon/DataTable.css" rel="stylesheet" />
+</head>
+<body>
+    <br /><br /> <p class="h3" style="margin-left:40%"> KASKO SATIŞI</p><br /><br />
+    <div class="tab">
+        <button class="tablinks" onclick="openCity(event, 'GenelBilgiler')">Genel Bilgileri</button>
+        <button class="tablinks" onclick="openCity(event, 'SatisBilgiler')">Satış Bilgileri</button>
+    </div>
+    <div class="container">
+        <div class="row">
+            <form action="/Home/KaskoSatis" method="post">
+                <div id="GenelBilgiler" class="tabcontent">
+                    <h3 style="margin-left:46%;">Genel Bilgileri</h3>
+                    @{ servicesorulistele = new SGetirKaskoSoru();
+                        detay = new DTOTanimDetay();
+                        detay.Detay1 = "ComponentTanimi";
+                        detay.Detay2 = "Müsteri Componenti";
+                        foreach (var item in servicesorulistele.GetirKaskoSoru(detay))
+                        {
+                            if (item.Detay4 == "Select")
+                            {
+                                cevap = new DTOTanimDetay();
+                                cevap.Detay1 = item.Detay1;
+                                cevap.Detay2 = item.Detay2;
+                                cevap.Detay3 = item.Detay3;
+                                servicegetircevap = new SGetirCevap();
+                                <div class="form-group">
+                                    <label for="@item.Detay3">@item.Detay3</label>
+                                    <select class="form-control" id="@item.Detay4" name="satiskasko" required>
+                                        <option value="">Seçiniz</option> @{ foreach (var itemnew in servicegetircevap.GetirCevap(cevap))
+                                            {
+                                                <option value="@itemnew">@itemnew</option>}
+                                        }
+                                    </select>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="form-group">
+                                    <label for="@item.Detay3">@item.Detay3</label>
+                                    <input class="form-control" style="width:95%" type="@item.Detay4" id="satiskasko" name="satiskasko" placeholder="@item.Detay3" required />
+                                </div>
+                            }
+                        }
+                    }
+                </div>
+                <div id="SatisBilgiler" class="tabcontent">
+                    <h3 style="margin-left:46%;">Araç Bilgileri</h3>
+
+                    @{servicesorulistele = new SGetirKaskoSoru();
+                        detay = new DTOTanimDetay();
+                        detay.Detay1 = "UrunTanimi";
+                        detay.Detay2 = "Kasko";
+                        foreach (var item in servicesorulistele.GetirKaskoSoru(detay))
+                        {
+                            if (item.Detay4 == "Select")
+                            {
+                                cevap = new DTOTanimDetay();
+                                cevap.Detay1 = item.Detay1;
+                                cevap.Detay2 = item.Detay2;
+                                cevap.Detay3 = item.Detay3;
+                                servicegetircevap = new SGetirCevap();
+
+                                <div class="form-group">
+                                    <label for="@item.Detay3">@item.Detay3</label>
+                                    <select class="form-control" id="satiskasko" name="satiskasko" required>
+                                            <option value="">Seçiniz</option>
+                                            @{ foreach (var itemnew in servicegetircevap.GetirCevap(cevap))
+                                                {
+                                                    <option value="@itemnew">@itemnew</option>}
+                                            }
+                                        </select>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="form-group">
+                                    <label for="@item.Detay3">@item.Detay3</label>
+                                    <input class="form-control" style="width:95%" type="@item.Detay4" id="satiskasko" name="satiskasko" placeholder="@item.Detay3" required />
+                                </div>
+                            }
+                        }
+                    }
+                    <h3 style="margin-left:46%;">Ödeme Bilgileri</h3>
+                    @{servicesorulistele = new SGetirKaskoSoru();
+                        detay = new DTOTanimDetay();
+                        detay.Detay1 = "ComponentTanimi";
+                        detay.Detay2 = "Satis Componenti";
+                        foreach (var item in servicesorulistele.GetirKaskoSoru(detay))
+                        {
+                            if (item.Detay4 == "Select")
+                            {
+                                cevap = new DTOTanimDetay();
+                                cevap.Detay1 = item.Detay1;
+                                cevap.Detay2 = item.Detay2;
+                                cevap.Detay3 = item.Detay3;
+                                servicegetircevap = new SGetirCevap();
+                                <div class="form-group">
+                                    <label for="@item.Detay3">@item.Detay3</label>
+                                    <select class="form-control" id="satiskasko" name="satiskasko" required>
+                                        <option value="">Seçiniz</option>
+                                        @{ foreach (var itemnew in servicegetircevap.GetirCevap(cevap))
+                                            {
+                                                <option value="@itemnew">@itemnew</option>}
+                                        }
+                                    </select>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="form-group">
+                                    <label for="@item.Detay3">@item.Detay3</label>
+                                    <input class="form-control" style="width:95%" type="@item.Detay4" id="satiskasko" name="satiskasko" placeholder="@item.Detay3" required />
+                                </div>
+                            }
+                        }
+                    }
+                    <div class="form-check">
+                        <button type="submit" class="btn btn-danger" style="margin-left:85%" id="kaydetcevap">SAT</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+

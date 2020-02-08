@@ -88,11 +88,57 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Bootstrap\css\bootstrap-grid.css" />
+    <Content Include="Bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="Bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="Bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="Bootstrap\css\bootstrap.css" />
+    <Content Include="Bootstrap\css\bootstrap.min.css" />
+    <Content Include="Bootstrap\js\bootstrap.bundle.js" />
+    <Content Include="Bootstrap\js\bootstrap.bundle.min.js" />
+    <Content Include="Bootstrap\js\bootstrap.js" />
+    <Content Include="Bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\fontawesome.min.css" />
+    <Content Include="Content\otomasyon\anasayfa.css" />
+    <Content Include="Content\otomasyon\CevapTanimi.css" />
+    <Content Include="Content\otomasyon\ComponentTanimi.css" />
+    <Content Include="Content\otomasyon\DataTable.css" />
+    <Content Include="Content\otomasyon\KaskoSatis.css" />
+    <Content Include="Content\otomasyon\Layout.css" />
+    <Content Include="Content\otomasyon\LoginPage.css" />
+    <Content Include="Content\otomasyon\Modal.css" />
+    <Content Include="Content\otomasyon\SoruTanimi.css" />
+    <Content Include="Content\otomasyon\tanimcard.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="img\anasayfa.png" />
+    <Content Include="img\arkaplan.png" />
+    <Content Include="img\images.jfif" />
+    <Content Include="img\indir.jfif" />
+    <Content Include="img\vakıfbank.png" />
+    <Content Include="img\vakıfbank2.png" />
+    <Content Include="Scripts\ajax.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery-1.11.1.min.js" />
+    <Content Include="Scripts\Jquery-datatables.mini.js" />
+    <Content Include="Scripts\jquery.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\Otomasyon\Otomasyon.js" />
     <Content Include="Web.config" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -100,7 +146,34 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
+    <Content Include="Bootstrap\css\bootstrap-grid.css.map" />
+    <Content Include="Bootstrap\css\bootstrap-grid.min.css.map" />
+    <Content Include="Bootstrap\css\bootstrap-reboot.css.map" />
+    <Content Include="Bootstrap\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Bootstrap\css\bootstrap.css.map" />
+    <Content Include="Bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="Bootstrap\js\bootstrap.bundle.js.map" />
+    <Content Include="Bootstrap\js\bootstrap.bundle.min.js.map" />
+    <Content Include="Bootstrap\js\bootstrap.js.map" />
+    <Content Include="Bootstrap\js\bootstrap.min.js.map" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="packages.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\LoginPage.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Home\Anasayfa.cshtml" />
+    <Content Include="Views\Home\UrunTanimi.cshtml">
+      <BrowseToURL>~/Home/UrunTanimi</BrowseToURL>
+    </Content>
+    <Content Include="Views\Home\SoruTanimi.cshtml" />
+    <Content Include="Views\Home\CevapTanimi.cshtml" />
+    <Content Include="Views\Home\ComponentTanimi.cshtml" />
+    <Content Include="Views\Home\KaskoSatis.cshtml" />
+    <Content Include="Scripts\Jquery-3.3.1.js" />
+    <Content Include="Views\Home\urunSatisTanimi.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -110,8 +183,25 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Globals\Globals.csproj">
+      <Project>{e0eacb66-655f-4916-90f4-a8cc0b322358}</Project>
+      <Name>Globals</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Peak.Common.SigortaOtomasyonu\Peak.Common.SigortaOtomasyonu.csproj">
+      <Project>{f59015ca-5dcf-48d3-9698-75b68022a00a}</Project>
+      <Name>Peak.Common.SigortaOtomasyonu</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Peak.Entity.SigortaOtomasyonu\Peak.Entity.SigortaOtomasyonu.csproj">
+      <Project>{25fb2ac2-e36a-4372-b40f-66f5b5d41179}</Project>
+      <Name>Peak.Entity.SigortaOtomasyonu</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Peak.Service.SigortaOtomasyonu\Peak.Service.SigortaOtomasyonu.csproj">
+      <Project>{7b71d180-dd46-44bb-a520-ec75ab284f79}</Project>
+      <Name>Peak.Service.SigortaOtomasyonu</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

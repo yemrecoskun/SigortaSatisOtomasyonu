@@ -1,0 +1,162 @@
+﻿ @using Peak.Common.SigortaOtomasyonu.DataTransferObjects
+@{
+    ViewBag.Title = "UrunTanimi";
+    DTOTanimDetay dTO = new DTOTanimDetay();
+}
+<html>
+<head>
+
+    <script src="~/Scripts/jquery-1.11.1.min.js"></script>
+    <script src="~/Scripts/ajax.js"></script>
+    <link href="~/Content/otomasyon/Modal.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/Otomasyon/Otomasyon.js"></script>
+    <link href="~/Content/otomasyon/SoruTanimi.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="container">
+        <div class="row col-md-6 col-md-offset-2 custyle" style="width:100%;margin-right:auto;margin-left:auto">
+            <br /><br /><br /><br /><h3 style="margin-left:45%;">ÜRÜN LİSTESİ</h3>
+            <table class="table table-striped custab">
+                <thread>
+                    <tr>
+                        <th>Id</th>
+                        <th>Ürün Kodu</th>
+                        <th>Ürün Adı</th>
+                        <th class="text-center">Durum</th>
+                    </tr>
+                </thread>
+                @{
+                    Peak.Service.SigortaOtomasyonu.SUrunListele s = new Peak.Service.SigortaOtomasyonu.SUrunListele();
+
+                    foreach (var item in s.listeleurun())
+                    {
+                        <tr id="@item.id">
+                            <td>@item.id</td>
+                            <td>@item.Detay1</td>
+                            <td>@item.Detay2</td>
+                            <td class="text-center">
+                                <button type="submit" class='btn btn-info btn-xs' data-toggle="modal" data-target="#squarespaceModalGuncelle" onclick="edit_data(@item.id)"><span class="glyphicon glyphicon-edit"></span> Güncelle</button>
+                                <button type="submit" class="btn btn-danger btn-xs" onclick="Sil(@item.id)"><span class="glyphicon glyphicon-remove"></span> Sil</button>
+                            </td>
+                        </tr>
+                    }
+                }
+            </table>
+        </div>
+    </div>
+    <form action="/Home/Duzenle" method="post">
+        <div class="modal fade" id="squarespaceModalGuncelle" tabindex="-1" role="dialog" aria-labelledby="modalLabel1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"> <span aria-hidden="true">x</span><span class="sr-only">Close</span></button>
+                        <h3 class="modal-title" id="lineModalLabel1"> Ürün Güncelle</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="id">Id</label>
+                            <input type="text" disabled="disabled" class="form-control" name="id" id="id" placeholder="Id" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="tanim_id">Tanım Id</label>
+                            <input type="text" disabled="disabled" class="form-control" name="tanim_id" id="tanim_id" placeholder="Tanım Id" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="detay1">Detay 1</label>
+                            <input type="text" class="form-control" name="Detay1" id="Detay1" placeholder="Ürün Adı" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="detay2">Detay 2</label>
+                            <input type="text" class="form-control" name="Detay2" id="Detay2" placeholder="Ürün Açıklaması" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="detay3">Detay 3</label>
+                            <input type="text" class="form-control" name="Detay3" id="Detay3" placeholder="Detay 3" />
+                        </div>
+                        <div class="form-group">
+                            <label for="detay4">Detay 4</label>
+                            <input type="text" class="form-control" name="Detay4" id="Detay4" placeholder="Detay 4" />
+                        </div>
+                        <div class="form-group">
+                            <label for="detay5">Detay 5</label>
+                            <input type="text" class="form-control" name="Detay5" id="Detay5" placeholder="Detay 5" />
+                        </div>
+                        <div class="form-group">
+                            <label for="detay6">Detay 6</label>
+                            <input type="text" class="form-control" name="Detay6" id="Detay6" placeholder="Detay 6" />
+                        </div>
+                        <div class="form-group">
+                            <label for="detay7">Detay 7</label>
+                            <input type="text" class="form-control" name="Detay7" id="Detay7" placeholder="Detay 7" />
+                        </div>
+                        <div class="form-group">
+                            <label for="detay8">Detay 8</label>
+                            <input type="text" class="form-control" name="Detay8" id="Detay8" placeholder="Detay 8" />
+                        </div>
+                        <div class="form-group">
+                            <label for="detay9">Detay 9</label>
+                            <input type="text" class="form-control" name="Detay9" id="Detay9" placeholder="Detay 9" />
+                        </div>
+                        <div class="form-group">
+                            <label for="detay10">Detay10</label>
+                            <input type="text" class="form-control" name="Detay10" id="Detay10" placeholder="Detay 10" />
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="btn-group btn-group-justified" role="group" aria-label="group button">
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-default" data-dismiss="modal" role="button">İptal</button>
+                            </div>
+
+                            <div class="btn-group" role="group">
+                                <button type="submit" id="saveImage" class="btn btn-default btn-hover-green" data-action="save" role="button">Kaydet</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="center">
+        <button type="submit" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#squarespaceModal" style="margin-left:80%"><span class="glyphicon glyphicon-play"></span>Ürün Ekle</button>
+    </div>
+
+    <form action="/Home/Kaydet" method="post">
+        <div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                        <h3 class="modal-title" id="lineModalLabel">Ürün Ekle</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="detay1">Detay 1</label>
+                            <input type="text" class="form-control" name="Detay1K" id="Detay1K" placeholder="Ürün Adı" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="detay2">Detay2</label>
+                            <input type="text" class="form-control" name="Detay2K" id="Detay2K" placeholder="Ürün Açıklaması" required />
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="btn-group btn-group-justified" role="group" aria-label="group button">
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-default" data-dismiss="modal" role="button">İptal</button>
+                            </div>
+
+                            <div class="btn-group" role="group">
+                                <button type="submit" id="saveImage" class="btn btn-default btn-hover-green" data-action="save" role="button">Kaydet</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </form>
+    <br /><br /><br /><br />
+</body>
+</html>

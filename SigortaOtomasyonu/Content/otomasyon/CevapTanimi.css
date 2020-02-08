@@ -1,0 +1,21 @@
+﻿body, html {
+    height: 100%;
+    margin: 0;
+    background-image: url(/img/arkaplan.png);
+    background-position: center;
+    background-size: cover;
+    background-attachment: scroll;
+}
+
+.custab {
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin: 5% 0;
+    box-shadow: 3px 3px 2px #ccc;
+    transition: 0.5s;
+}
+
+    .custab:hover {
+        box-shadow: 3px 3px 0px transparent;
+        transition: 0.5s;
+    }

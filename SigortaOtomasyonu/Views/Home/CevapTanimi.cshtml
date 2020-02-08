@@ -1,0 +1,99 @@
+﻿@using Peak.Service.SigortaOtomasyonu;
+@{
+    ViewBag.Title = "CevapTanimi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<html>
+<head>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/otomasyon/CevapTanimi.css" rel="stylesheet" />
+    <script src="~/Scripts/Otomasyon/Otomasyon.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <br /><br />
+            <h3 style="margin-left:46%;">CEVAP TANIMI</h3>
+            <h3 style="margin-left:1.3%">Cevap Ekle</h3>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <form>
+                    <div class="form-group">
+                        <label for="inputtipi">Tanım Kodu Seçiniz</label>
+                        <select class="form-control" id="tanimkodu" required>
+                            <option value="">Seçiniz</option>
+                            @{STanimGetir s = new STanimGetir();
+                                foreach (var item in s.tanim())
+                                {
+                                    if (item.id != 4 && item.id != 5)
+                                    {
+                                        <option value="@item.tanim_kodu">@item.tanim_kodu</option>
+                                    }
+                                }
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputtipi">Tanım Adı Seçiniz</label>
+                        <select class="form-control" id="tanimadi" required>
+                            <option value="Seçiniz">Seçiniz</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="soru">Soru Adı</label>
+                        <select class="form-control" id="soruadi" required>
+                            <option value="">Seçiniz</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputtipi" >Eklemek istediğiniz cevap</label>
+                        <input class="form-control" type="text" id="cevap" required/>
+                    </div>
+                    <div class="form-check">
+                        <button type="submit" class="btn btn-primary" style="width:100%" id="kaydetcevap" onclick="cevapekle()">Kaydet</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row col-md-6 col-md-offset-2 custyle" style="width:100%;margin-right:auto;margin-left:auto">
+            <br /><h3 style="margin-left:45%;">CEVAP LİSTESİ</h3>
+            <table class="table table-striped custab">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Tanım Kodu</th>
+                        <th>Tanım Adı</th>
+                        <th>Soru Adı</th>
+                        <th>Cevap</th>
+                        <th class="text-center">Durum</th>
+                    </tr>
+                </thead>
+                @{ SCevapListele servicecevaplistele = new SCevapListele();
+                    foreach (var item in servicecevaplistele.cevaplistesi())
+                    {
+                        <tr id="@item.id">
+                            <td>@item.id</td>
+                            <td>@item.Detay1</td>
+                            <td>@item.Detay2</td>
+                            <td>@item.Detay3</td>
+                            <td>@item.Detay4</td>
+                                
+                            <td class="text-center">
+                                <button type="submit" class='btn btn-info btn-xs' onclick="DuzenleGetirCevap(@item.id)"><span class="glyphicon glyphicon-edit"></span> Güncelle</button>
+                                <button type="submit" class="btn btn-danger btn-xs" onclick="Sil(@item.id)"><span class="glyphicon glyphicon-remove"></span> Sil</button>
+                            </td>
+                        </tr>
+                    }
+                }
+            </table>
+        </div>
+    </div>
+</body>
+</html>
+
+
