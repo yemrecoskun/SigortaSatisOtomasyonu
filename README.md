@@ -22,3 +22,4 @@
 ### Sigorta Satışı Yapmak.
   - Satış Paneline geldiğimizde Ürün seçiyoruz( Araç Sigortası vs.) Ürüne Ait tüm sorular ekrana gelir ve satışımızı oluşturarak bize 
   JSON formatında dosya oluşturur.
+ 
