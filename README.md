@@ -1,3 +1,4 @@
+# English Readme : [README-EN.md](https://github.com/yemrecoskun/SigortaSatisOtomasyonu/blob/master/README-EN.md)
 # SigortaSatisOtomasyonu
 ## Projemizin Amacı
 - Müşterilere sigorta satışı yapar.
